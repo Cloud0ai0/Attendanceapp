@@ -1,34 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-const Card = ({title}) =>{
-  return (
-    <div>
-      <h2>{title}</h2>
-      
-    </div>
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
+import Landing from './pages/Landing.jsx'
+import Login from './pages/Login.jsx'
+import TeacherDashboard from './pages/TeacherDashboard.jsx'
+import StudentDashboard from './pages/StudentDashboard.jsx'
 
+export default function App() {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/teacher" element={<TeacherDashboard />} />
+          <Route path="/student" element={<StudentDashboard />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   )
 }
-
-function MyButton() {
-  return (
-    <button>I'm a button</button>
-  );
-}
-
-function App() {
-  return (
-    <div>
-      <h1>Welcome to my app</h1  >
-      <Card title="black panther"/>
-      <Card title="king kong"/>
-      <Card title="Avatar"/>
-      <MyButton />
-    </div>
-  );
-}
-
-export default App
-
